@@ -19,6 +19,7 @@ export class FormComponent {
   });
 
 
+  /*
   submitSearch(){
     // FIXME with this help:
     // https://angular.dev/tutorials/first-app/12-forms
@@ -28,6 +29,7 @@ export class FormComponent {
       this.searchForm.value.vehicle ?? '',
     );
   }
+  */
 
   // TODO: use HttpClient provided by Angular rather than fetch
   SWAPI_base_url = 'https://swapi.dev/api/';

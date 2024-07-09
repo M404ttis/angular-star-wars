@@ -12,11 +12,10 @@ import { StarWarsStarship } from './../star-wars-starshipI';
   styleUrl: './film-card.component.css'
 })
 export class FilmCardComponent {
-
   // this is a test film
   film1: StarWarsFilmI = {
 
-    characters: <StarWarsCharacter>{
+    characters: <StarWarsCharacter> {
       birth_year: "19 BBY",
       eye_color: "Blue",
       gender: "Male",
@@ -29,7 +28,7 @@ export class FilmCardComponent {
       edited: "2014-12-10T13:52:43.172000Z",
     },
 
-    vehicles: <StarWarsVehicle> {
+    vehicles: <StarWarsVehicle>{
         cargo_capacity: "50000",
         consumables: "2 months",
         cost_in_credits: "150000",
@@ -43,7 +42,7 @@ export class FilmCardComponent {
         name: "Sand Crawler",
         passengers: "30",
         vehicle_class: "wheeled"
-    }
+    },
 
     starships: <StarWarsStarship>{
         MGLT: "10 MGLT",
