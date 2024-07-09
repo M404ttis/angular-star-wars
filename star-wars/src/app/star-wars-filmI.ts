@@ -8,6 +8,6 @@ export interface StarWarsFilmI {
   starships: StarWarsStarship[];
   opening_crawl: string;
   title: string;
-  release_date: Date;
+  release_date: string;
 }
 
