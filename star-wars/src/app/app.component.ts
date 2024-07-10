@@ -22,10 +22,10 @@ export class AppComponent {
 
   ){}
   ngOnInit():void {
-    this.swapiVehicles.fetchData('');
-    this.swapiPeople.fetchData('');
-    this.swapiStarships.fetchData('');
-    this.swapiFilms.fetchData('');
+    this.swapiVehicles.fetchData('https://swapi.dev/api/vehicles');
+    this.swapiPeople.fetchData('https://swapi.dev/api/people');
+    this.swapiStarships.fetchData('https://swapi.dev/api/starships');
+    this.swapiFilms.fetchData('https://swapi.dev/api/films');
   }
   title = 'star-wars';
 }
