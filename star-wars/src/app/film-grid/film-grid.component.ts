@@ -6,7 +6,7 @@ import { StarWarsCharacter } from './../star-wars-characterI';
 import { StarWarsStarship } from './../star-wars-starshipI';
 
 @Component({
-  selector: 'app-film-grid',
+  selector: 'film-grid',
   standalone: true,
   imports: [FilmCardComponent],
   templateUrl: './film-grid.component.html',
