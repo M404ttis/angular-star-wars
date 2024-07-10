@@ -1,5 +1,10 @@
-// TODO: for loop to iterate over the different films
 <section>
   // black magic obviously, this property binding
-  <app-film-card [FilmCardComponent ]="film1" > </app-film-card>
+  // TODO: ngFOR iteration over the films...
+  <app-film-card
+    *ngFor="let film of films"
+    [films]="films"
+    >
+
+  </app-film-card>
 </section>
