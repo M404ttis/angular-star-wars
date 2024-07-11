@@ -30,20 +30,6 @@ export class FormComponent implements OnInit {
 
   }
 
-    /*
-  // fetch people
-      this.starWarsService.fetchData('people').subscribe({
-        next: data => this.people = data.results,
-        error: err => console.error('Error fetchign the 👯 people 😨', err),
-        complete: () => console.log('People 👯 fetching completed 💯')
-    });
-  }
-  handleData(data: any){
-    this.people = data;
-    console.log(data);
-  }
-  */
-
   @Output() dataFetched = new EventEmitter<any>();
 
 
@@ -51,7 +37,13 @@ export class FormComponent implements OnInit {
 
     if(this.selectedCategory && this.userInput){
       this.starWarsService.fetchQuerySelection(this.selectedCategory, this.userInput).subscribe(
-        data => { this.searchResults = data.results}
+        data => {
+          this.searchResults = data.results
+          console.log(data.results)
+          // TODO: fire event, that broadcasts the films, that starr the searchResult
+          // TODO: make the filmCards consume the event and react with adding a class to self
+          // TODO: delete that highlight class when fetchQueryselection-event is fired
+        }
       ),
       (error: Error)  => {console.error('😭 fetch with category and user Input failed', error ); }
     }
