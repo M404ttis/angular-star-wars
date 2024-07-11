@@ -1,6 +1,8 @@
 <div class="container">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
+
+
       <label for="category">Category</label>
       <select [(ngModel)]="selectedCategory" name="category" class="form-control" required>
         <option value="people">People</option>
@@ -8,7 +10,25 @@
         <option value="starships">Starships</option>
       </select>
     </div>
+
+    <div>
+      <label for="userInput"> Search Term:  </label>
+      <input type="text" [(ngModel)]="userInput" name="userInput" id="userInput" >
+    </div>
+
     <button type="submit" class="btn btn-primary">Send</button>
+
+    <!-- let's display this just when there are results -->
+    <div *ngIf="searchResults.length > 0">
+      <h2>Search Results:</h2>
+      <ul>
+        <li *ngFor="let result of searchResults">
+          {{ result.name }}
+        </li>
+      </ul>
+    </div>
+
+
   </form>
 </div>
 

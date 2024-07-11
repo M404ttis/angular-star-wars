@@ -4,8 +4,6 @@ import { Component,Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl ,ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {StarWarsService} from './../swapi-fetch.service';
 
-
-
 @Component({
   selector: 'app-form',
   standalone: true,
@@ -24,8 +22,9 @@ export class FormComponent implements OnInit {
 
   constructor(private starWarsService: StarWarsService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+    /*
   // fetch people
       this.starWarsService.fetchData('people').subscribe({
         next: data => this.people = data.results,
@@ -37,7 +36,7 @@ export class FormComponent implements OnInit {
     this.people = data;
     console.log(data);
   }
-
+  */
 
   @Output() dataFetched = new EventEmitter<any>();
 
@@ -48,7 +47,7 @@ export class FormComponent implements OnInit {
       this.starWarsService.fetchQuerySelection(this.selectedCategory, this.userInput).subscribe(
         data => { this.searchResults = data.results}
       ),
-      error => {console.error('😭 fetch with category and user Input failed', error ); }
+      (error: Error)  => {console.error('😭 fetch with category and user Input failed', error ); }
     }
     this.starWarsService.fetchData(this.selectedCategory).subscribe(data => {
       this.dataFetched.emit(data.results);
