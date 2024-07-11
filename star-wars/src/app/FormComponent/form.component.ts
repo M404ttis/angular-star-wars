@@ -16,6 +16,8 @@ export class FormComponent implements OnInit {
   userInput: string = '';
   searchResults: any[] = [];
 
+  @Output() highlightFilms: EventEmitter<number[]> = new EventEmitter<number[]>();
+
   people: any[] = [];
   vehicles: any[] = [];
   starships: any[] = [];
@@ -24,13 +26,26 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    /*
     this.starWarsService.fetchData(this.selectedCategory).subscribe(data => {
       this.dataFetched.emit(data.results);
     });
+    */
 
-  }
+}
+    extractEpisodeIds(urls: string[]): number[]{
+      const regex = /\/(\d+)\/$/
+      const episodeIds: number[] = [];
+      urls.forEach(url => {
+        const match = url.match(regex);
+        if (match) {
+         episodeIds.push(Number(match[1]))
+        }
+      });
+      return episodeIds;
+    }
 
-  @Output() dataFetched = new EventEmitter<any>();
+  // @Output() dataFetched = new EventEmitter<any>();
 
 
   onSubmit(): void {
@@ -43,6 +58,7 @@ export class FormComponent implements OnInit {
           // TODO: fire event, that broadcasts the films, that starr the searchResult
           // TODO: make the filmCards consume the event and react with adding a class to self
           // TODO: delete that highlight class when fetchQueryselection-event is fired
+          this.highlightFilms.emit(this.extractEpisodeIds(data.results.films));
         }
       ),
       (error: Error)  => {console.error('😭 fetch with category and user Input failed', error ); }
