@@ -22,7 +22,13 @@ export class FormComponent implements OnInit {
 
   constructor(private starWarsService: StarWarsService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.starWarsService.fetchData(this.selectedCategory).subscribe(data => {
+      this.dataFetched.emit(data.results);
+    });
+
+  }
 
     /*
   // fetch people
@@ -49,8 +55,5 @@ export class FormComponent implements OnInit {
       ),
       (error: Error)  => {console.error('😭 fetch with category and user Input failed', error ); }
     }
-    this.starWarsService.fetchData(this.selectedCategory).subscribe(data => {
-      this.dataFetched.emit(data.results);
-    });
   }
 }
