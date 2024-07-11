@@ -9,15 +9,19 @@ As a user, I want an UI, where the 6 movies are shown initially and where I can 
 Using the Star wars API with the 6 Movies being accordingly higlighted, if one of the params applies after hitting the Search Button. 
 
 # Implementation
-- [ ] fetch from form with search param
-- [ ] CSS/JS to mark films where search applies
-- [ ] logic to implement the rendering logic after fetch i.e. the matching
+- [x] fetch from form with search param
 - [x] Component for form
 - [x] Comp for Cards 
 - [x] Comp for Grit, displaying cards
 - [x] fetches to the SWAPI 
 - [x] types for vehicles, people, starships and films 
-
+- [ ] CSS/JS to mark films where search applies
+- [ ] match the query results with films 
+    + every film has an episode_id
+    + vehicles, characters, starships ALL (yay) come with a results.films[url, url,..]
+    + the urls end with "../{episode_id}/"
+    + we could pattern-match the episode_id's with Array.filter
+    + the matching film gets a css class added, that marks it as starring the search query 
 
 # Problems and Solutions:
 - getting bootstrap run / importing BS in styles.css
@@ -29,5 +33,3 @@ Using the Star wars API with the 6 Movies being accordingly higlighted, if one o
     - tried to make the categories a dropdown, but urls given in response
     - tried to abstract the search url param "?search=", realized 
         + lol, was right, just typoed the category
-    - tried to 
-    - tried to 
