@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row">
-    <film-card *ngFor="let item of items" [item]="item"></film-card>
+    <film-card
+      (dataFetched)="handleData($event)"
+      *ngFor="let film of films"
+      [film]="film">
+    </film-card>
   </div>
 </div>
 

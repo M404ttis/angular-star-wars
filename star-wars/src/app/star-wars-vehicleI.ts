@@ -11,7 +11,8 @@ export interface StarWarsVehicle {
     manufacturer:string,
     max_atmosphering_speed:string, // for whatever reason, SWAPI makes this a string
     model:string,
-    name:string,
+    name:string,  // nice!
+
     passengers:string, // for whatever reason, SWAPI makes this a string
     vehicle_class:string,
 }

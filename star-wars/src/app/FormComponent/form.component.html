@@ -2,7 +2,7 @@
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="category">Category</label>
-      <select [selectedCategory]="selectedCategory" name="category" class="form-control" required>
+      <select [(ngModel)]="selectedCategory" name="category" class="form-control" required>
         <option value="people">People</option>
         <option value="vehicles">Vehicles</option>
         <option value="starships">Starships</option>

@@ -6,7 +6,7 @@ export interface StarWarsCharacter {
     hair_color:string,
     height:string,
     mass:string,
-    name:string,
+    name:string, // nice!
     skin_color:string,
     created:string,
     edited:string,

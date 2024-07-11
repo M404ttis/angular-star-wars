@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormComponent } from './FormComponent/form.component';
 import { FilmCardComponent } from './film-card/film-card.component';
 import { FilmGridComponent } from './film-grid/film-grid.component';
 import { CommonModule } from '@angular/common';
-//import {StarWarsService} from './swapi-fetch.service';
+import {StarWarsService} from './swapi-fetch.service';
 
 
 @Component({
@@ -16,10 +16,6 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
 
-  items: any[] = [];
-  handleData(data: any){
-    this.items = data;
-  }
 
 
   /*

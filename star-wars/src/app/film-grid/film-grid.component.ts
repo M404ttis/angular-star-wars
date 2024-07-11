@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {FilmCardComponent } from './../film-card/film-card.component'
 import { StarWarsFilmI } from '../star-wars-filmI';
 import { StarWarsVehicle } from './../star-wars-vehicleI';
@@ -6,7 +6,7 @@ import { StarWarsCharacter } from './../star-wars-characterI';
 import { StarWarsStarship } from './../star-wars-starshipI';
 import {AppComponent } from './../app.component';
 import { CommonModule } from '@angular/common';
-
+import { StarWarsService } from './../swapi-fetch.service';
 
 @Component({
   selector: 'film-grid',
@@ -15,9 +15,27 @@ import { CommonModule } from '@angular/common';
   templateUrl: './film-grid.component.html',
   styleUrl: './film-grid.component.css'
 })
-export class FilmGridComponent {
+export class FilmGridComponent implements OnInit {
 
-  @Input() items: any[] = [];
+
+  constructor(private starWarsService: StarWarsService){}
+
+  films: any[] = [];
+
+  ngOnInit(): void {
+      this.starWarsService.fetchData('films').subscribe({
+        next: data => this.films = data.results,
+        error: err => console.error('Error fetchign the films 😨', err),
+        complete: () => console.log('Film fetching completed 💯')
+    });
+  }
+
+  handleData(data: any){
+    this.films = data;
+    console.log("data from fetch incoming 🚀", data);
+  }
+
+
   @Input() swapiFilms: any; // Input decorator to receive data from parent
 
   // this is an Array of test films

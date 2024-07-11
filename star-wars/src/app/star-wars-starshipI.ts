@@ -12,7 +12,7 @@ export interface StarWarsStarship {
     manufacturer:string
     max_atmosphering_speed:string,
     model:string,
-    name:string,
+    name:string, // nice!
     passengers:string,
     starship_class:string
 }
