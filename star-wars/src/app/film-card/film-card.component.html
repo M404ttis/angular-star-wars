@@ -1,15 +1,10 @@
-<section>
-
-  <div class="card-wrapper">
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">STAR WARS: {{films[0].title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">released in {{ films[0].release_date }}</h6>
-        <p class="card-text"> {{ films[0].opening_crawl }} </p>
-        <a href="#" class="card-link"></a>
-        <a href="#" class="card-link"></a>
-      </div>
+<div class="col-4">
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">STAR WARS{{ item.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">released in {{ film.release_date }}</h6>
+        <p class="card-text"> {{ film.opening_crawl }} </p>
+      <p class="card-text">More details here...</p>
     </div>
   </div>
-
-</section>
+</div>

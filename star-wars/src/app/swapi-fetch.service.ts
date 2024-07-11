@@ -1,26 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable} from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SwapiFetchService {
+export class StarWarsService {
 
-  private films: any; // holds the response data
 
-  constructor(private http: HttpClient) {}
+private baseUrl = 'https://swapi.dev/api/';
 
-    fetchData(url:string): void {
-      this.http.get(url).subscribe(
-        (response) => {
-            this.films = response;
-            console.log(this.films);
-          },
-        (error) => {
-          console.error('upsi daisy, s.th. went wrong', error);
-        }
-    )
+  constructor(private http: HttpClient) { }
+
+  fetchData(category: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}${category}/`);
   }
-  getFilms(): any {return this.films}
 
 }

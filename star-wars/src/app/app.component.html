@@ -2,17 +2,8 @@
 
 <main class="main">
 
-  <section class="content">
-    <app-form></app-form>
-  </section>
-
-  <section class="content">
-    <film-card>FIXME, swap me with teh film-grid</film-card>
-  </section>
-
-  <section class="content">
-    <film-grid></film-grid>
-  </section>
+  <app-form (dataFetched)="handleData($event)"></app-form>
+  <film-grid [items]="items"></film-grid>
 
 </main>
 

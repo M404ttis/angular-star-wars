@@ -4,22 +4,28 @@ import { StarWarsFilmI } from '../star-wars-filmI';
 import { StarWarsVehicle } from './../star-wars-vehicleI';
 import { StarWarsCharacter } from './../star-wars-characterI';
 import { StarWarsStarship } from './../star-wars-starshipI';
+import {AppComponent } from './../app.component';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'film-grid',
   standalone: true,
-  imports: [FilmCardComponent],
+  imports: [FilmCardComponent,  CommonModule, AppComponent ],
   templateUrl: './film-grid.component.html',
   styleUrl: './film-grid.component.css'
 })
 export class FilmGridComponent {
 
+  @Input() items: any[] = [];
+  @Input() swapiFilms: any; // Input decorator to receive data from parent
+
   // this is an Array of test films
-  @Input() films: StarWarsFilmI[] = [
+  @Input() testFilms: StarWarsFilmI[] = [
 
   {
 
-    characters: <StarWarsCharacter> {
+      characters: <StarWarsCharacter> {
       birth_year: "19 BBY",
       eye_color: "Blue",
       gender: "Male",
