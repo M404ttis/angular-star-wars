@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { withFetch } from '@angular/common/http';
 import { Component,Output, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup, FormControl ,ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {  ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {StarWarsService} from './../swapi-fetch.service';
+import { HighlightFilmsService } from './../highlight-films.service';
 
 @Component({
   selector: 'app-form',
@@ -22,7 +22,10 @@ export class FormComponent implements OnInit {
   vehicles: any[] = [];
   starships: any[] = [];
 
-  constructor(private starWarsService: StarWarsService) { }
+  constructor(
+    private starWarsService: StarWarsService,
+    private highlightFilmService: HighlightFilmsService
+  ) { }
 
   ngOnInit(): void {
 
@@ -39,6 +42,8 @@ export class FormComponent implements OnInit {
       urls.forEach(url => {
         const match = url.match(regex);
         if (match) {
+        console.log("hi from inside extractEpisodeIds");
+        console.log("match", match);
          episodeIds.push(Number(match[1]))
         }
       });
@@ -50,15 +55,18 @@ export class FormComponent implements OnInit {
 
   onSubmit(): void {
 
+    console.log("onSubmit clicked")
     if(this.selectedCategory && this.userInput){
       this.starWarsService.fetchQuerySelection(this.selectedCategory, this.userInput).subscribe(
         data => {
           this.searchResults = data.results
-          console.log(data.results)
-          // TODO: fire event, that broadcasts the films, that starr the searchResult
-          // TODO: make the filmCards consume the event and react with adding a class to self
-          // TODO: delete that highlight class when fetchQueryselection-event is fired
-          this.highlightFilms.emit(this.extractEpisodeIds(data.results.films));
+          console.log("is this even reached?? ")
+          console.log("data.results.films", data.results.films)
+
+          // look, I even stored the Id's in a variable...
+          const episodeIds = this.extractEpisodeIds(data.results.films);
+          // TODO: use the highlight-film.service now
+          this.highlightFilmService.highlightFilms(episodeIds);
         }
       ),
       (error: Error)  => {console.error('😭 fetch with category and user Input failed', error ); }

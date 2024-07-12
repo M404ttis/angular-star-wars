@@ -22,6 +22,7 @@ export class FilmGridComponent implements OnInit {
 
   films: any[] = [];
 
+  // here we get the films when starting the app 🎥🎞️🎬
   ngOnInit(): void {
       this.starWarsService.fetchData('films').subscribe({
         next: data => this.films = data.results,
@@ -32,7 +33,6 @@ export class FilmGridComponent implements OnInit {
 
   handleData(data: any){
     this.films = data;
-    console.log("data from fetch incoming 🚀", data);
   }
 
 
